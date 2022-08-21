@@ -57,4 +57,4 @@ const DraftMainScreen = () => {
   );
 }
 
-export default App;
+export default DraftMainScreen;

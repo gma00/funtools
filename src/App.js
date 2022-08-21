@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import DraftMainScreen from './draftLottery/DraftMainScreen';
 import './App.css';
+import NavBar from './NavBar';
 
-function App() {
+const App = () => {
   return (
-    <h1 className="App">Fun Tools to Use</h1>
+    <div>
+      <NavBar />
+      <Routes>
+        <Route exact path="/About" component={<DraftMainScreen/>} />
+        <Route exact path="/Draft" element={<DraftMainScreen/>} />
+        <Route exact path="/" element={<DraftMainScreen/>} />
+      </Routes>
+    </div>
   );
 }
 
