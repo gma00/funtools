@@ -4,7 +4,7 @@ import RowEntry from './RowEntry';
 import Results from './Results';
 import { generate } from './generate.js';
 import sticks from './artifacts/sticks.svg';
-import './DraftMainScreen.css';
+import './DraftMainPage.css';
 
 const DraftMainScreen = () => {
   const [data, setData] = useState([]);
@@ -38,8 +38,21 @@ const DraftMainScreen = () => {
               setData([...data, { id: index, name: team, percentage: 0 }]);
             }}
           />
-          <button onClick={() => setData([])}>Clear All</button>
-          <button onClick={() => runLottery()}>Run Lottery</button>
+          <button
+            className="button"
+            onClick={() => {
+              setData([]);
+              setResults([]);
+            }}
+          >
+            Clear All
+          </button>
+          <button 
+            className="button"
+            onClick={() => runLottery()}
+          >
+            Run Lottery
+          </button>
         </div>
         <hr style={{ width: '100%' }}/>
         <Table
