@@ -1,58 +1,19 @@
 import React, { useState } from 'react';
-import Table from './Table';
-import RowEntry from './RowEntry';
-import Results from './Results';
-import { generate } from './generate.js';
-import sticks from './sticks.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import DraftMainPage from './draftLottery/DraftMainPage';
+import AboutPage from './about/AboutPage';
+import NavBar from './NavBar';
 
-function App() {
-  const [data, setData] = useState([]);
-  const [results, setResults] = useState([]);
-
-  const updateItem = (id, value, data) => {
-    const idIndex = data.findIndex(item => item.id === id);
-    data[idIndex] = { ...data[idIndex], percentage: value };
-    return data;
-  };
-
-  const removeItem = (id, data) => {
-    return data.filter(item => item.id !== id);
-  };
-
-  const runLottery = () => {
-    const results = generate(data);
-    setResults(results);
-  };
-
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={sticks} className="App-logo" alt="logo" />
-      </header>
-      <body className="App-body">
-        <div className="Top-Row">
-          <RowEntry
-            onAdd={team => {
-              const index = data.length;
-              setData([...data, { id: index, name: team, percentage: 0 }]);
-            }}
-          />
-          <button onClick={() => setData([])}>Clear All</button>
-          <button onClick={() => runLottery()}>Run Lottery</button>
-        </div>
-        <hr style={{ width: '100%' }}/>
-        <Table
-          data={data} 
-          onUpdate={(id, value) => {
-            setData(updateItem(id, value, data));
-          }}
-          onDelete={id => {
-            setData(removeItem(id, data));
-          }}
-        />
-        <Results results={results} />
-      </body>
+    <div>
+      <NavBar />
+      <Routes>
+        <Route exact path="/funtools/About" element={<AboutPage/>} />
+        <Route exact path="/funtools/Draft" element={<DraftMainPage/>} />
+        <Route exact path="/funtools" element={<AboutPage/>} />
+        <Route exact path="/" element={<AboutPage/>} />
+      </Routes>
     </div>
   );
 }

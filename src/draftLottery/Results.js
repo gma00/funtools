@@ -2,11 +2,11 @@ import React from 'react';
 
 const Results = ({ results }) => {
   return (
-    <ul>
+    <ol>
       {results.map(item => {
         return <li>{item}</li>
       })}
-    </ul>
+    </ol>
   );
 };
 

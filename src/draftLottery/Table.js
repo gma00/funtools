@@ -4,20 +4,12 @@ import TableRow from './TableRow';
 const Table = ({ data, onUpdate, onDelete }) => {
   return (
     <div>
-      <table className="">
-        <thead>
-          <tr>
-            <th>
-              Team Name
-            </th>
-            <th>
-              Percentage
-            </th>
-            <th>
-              Action
-            </th>
-          </tr>
-        </thead>
+      <table id="teams">
+        <tr>
+          <th>Team Name</th>
+          <th>Percentage</th>
+          <th>Action</th>
+        </tr>
         <tbody>
           {data.map(row => {
             const percentage = row.percentage;
